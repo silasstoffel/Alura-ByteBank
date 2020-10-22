@@ -9,9 +9,15 @@ using ByteBank.Modelos.Funcionarios;
 
 namespace ByteBank.SistemaAgencia
 {
-    class Program
+    class Program 
     {
-        static void Main(string[] args)
+
+        static void Main(string[] args) {
+            Program.exemploArray();
+            Console.ReadLine();
+        }
+
+        static void Main2(string[] args)
         {
             // Olá, meu nome é Guilherme e você pode entrar em contato comigo
             // através do número 8457-4456!
@@ -54,7 +60,7 @@ namespace ByteBank.SistemaAgencia
 
             Console.WriteLine(urlTeste.Contains("ByteBank"));
 
-            
+
             Console.ReadLine();
 
             // pagina?argumentos
@@ -144,7 +150,73 @@ namespace ByteBank.SistemaAgencia
             string argumentos = url.Substring(indiceInterrogacao + 1);
             Console.WriteLine(argumentos);
         }
-    }
 
+
+
+        public static void exemploArray() {
+
+            int[] numeros = new int[]
+            {
+                10, 20, 30, 40, 50, 60
+            };
+
+            Program.imprimirArray(numeros);
+            
+            int remover = 10;
+            Console.WriteLine($"Removendo {remover}");
+
+            Console.WriteLine("Novo array");
+            numeros = Program.remover(numeros, remover);
+
+            Program.imprimirArray(numeros);
+
+        }
+
+        public static void imprimirArray(int[] numeros)
+        {
+            for (int i = 0; i < numeros.Length; i++)
+            {
+                Console.WriteLine($"numeros[{i}] = {numeros[i]}");
+            }
+        }
+
+        public static int[] remover(int[] numeros, int remover)
+        {
+            // 1. Achar o numero a ser removido
+            int pos = -1;
+            int i = 0;
+            for(i = 0; i < numeros.Length; i++)
+            {
+                if (numeros[i] == remover)
+                {
+                    pos = i;
+                    break;
+                }
+            }
+            if (pos == -1)
+                return numeros;
+
+            if (pos == numeros.Length - 1)
+            {
+                numeros[numeros.Length - 1] = -1;
+                return numeros;
+            }
+            int prox = 0;
+            for (i = pos; i < numeros.Length; i++)
+            { 
+                prox = i + 1;
+                if (prox < numeros.Length)
+                {
+                    numeros[i] = numeros[prox];
+                } else
+                {
+                    numeros[i] = -1;
+                }
+            }
+            return numeros;
+        }
+
+
+    }
 
 }
