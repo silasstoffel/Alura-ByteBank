@@ -26,6 +26,24 @@ namespace ByteBank.SistemaAgencia
                 Console.WriteLine($"[{index}] = {idade}");
                 index++;
             }
+
+            Console.WriteLine("Comparação de Lista de Conta Corrente");
+
+            var contas = new List<ContaCorrente>() {
+                new ContaCorrente(257, 102030),
+                new ContaCorrente(257, 102029),
+                new ContaCorrente(257, 102027),
+                new ContaCorrente(257, 102040),
+                new ContaCorrente(257, 102025)
+            };
+
+            contas.Sort();
+
+            foreach (var conta in contas.ToArray())
+            {
+                Console.WriteLine($"Conta: {conta.Numero} | Agencia: {conta.Agencia}");
+            }
+
             Console.ReadLine();
         }
 
