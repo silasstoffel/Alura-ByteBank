@@ -6,13 +6,36 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ByteBank.Modelos;
 using ByteBank.Modelos.Funcionarios;
+using ByteBank.SistemaAgencia.Extensoes;
 
 namespace ByteBank.SistemaAgencia
 {
     class Program 
     {
 
-        static void Main(string[] args) {
+        static void Main(string[] args)
+        {
+            var idades = new List<int>();
+            idades.Add(10);
+            idades.Add(20);
+            idades.Add(30);
+            idades.AdicionarVarios(40, 50, 60, 70);
+            int index = 0;
+            foreach (int idade in idades.ToArray())
+            {
+                Console.WriteLine($"[{index}] = {idade}");
+                index++;
+            }
+            Console.ReadLine();
+        }
+
+        static void Main4(string[] args)
+        {
+            ExemploList();
+            Console.ReadLine();
+        }
+
+        static void Main3(string[] args) {
             Program.exemploArray();
             Console.ReadLine();
         }
@@ -149,6 +172,21 @@ namespace ByteBank.SistemaAgencia
             Console.WriteLine(url);
             string argumentos = url.Substring(indiceInterrogacao + 1);
             Console.WriteLine(argumentos);
+        }
+
+
+        public static void ExemploList()
+        {
+            List<int> idades = new List<int>();
+            idades.Add(24);
+            idades.Add(27);
+            idades.Add(31);
+            
+            int index = 0;
+            foreach(int idade in idades.ToArray())
+            {
+                Console.WriteLine($"[{index}] = {idade}");
+            }
         }
 
 
