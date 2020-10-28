@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ByteBank.Modelos;
+using ByteBank.Modelos.Compradoroes;
 using ByteBank.Modelos.Funcionarios;
 using ByteBank.SistemaAgencia.Extensoes;
 
@@ -26,18 +27,30 @@ namespace ByteBank.SistemaAgencia
                 Console.WriteLine($"[{index}] = {idade}");
                 index++;
             }
-
-            Console.WriteLine("Comparação de Lista de Conta Corrente");
+            Console.WriteLine("-----------------------------------------------------");
+            Console.WriteLine("Ordenação de Lista de Conta Corrente  (Por Número)");
 
             var contas = new List<ContaCorrente>() {
-                new ContaCorrente(257, 102030),
-                new ContaCorrente(257, 102029),
-                new ContaCorrente(257, 102027),
-                new ContaCorrente(257, 102040),
+                new ContaCorrente(418, 102030),
+                new ContaCorrente(097, 102029),
+                new ContaCorrente(221, 102027),
+                new ContaCorrente(315, 102040),
                 new ContaCorrente(257, 102025)
             };
 
+            // Sort usando a implementação do IComparable
             contas.Sort();
+
+            foreach (var conta in contas.ToArray())
+            {
+                Console.WriteLine($"Conta: {conta.Numero} | Agencia: {conta.Agencia}");
+            }
+
+            Console.WriteLine("-----------------------------------------------------");
+            Console.WriteLine("Ordenação de Lista de Conta Corrente (Por Agência)");
+
+            // Sort usando a implementação do IComparer
+            contas.Sort(new ContaCorrentePorAgencia());
 
             foreach (var conta in contas.ToArray())
             {
