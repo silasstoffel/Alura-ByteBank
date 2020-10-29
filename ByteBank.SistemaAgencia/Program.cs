@@ -16,6 +16,38 @@ namespace ByteBank.SistemaAgencia
 
         static void Main(string[] args)
         {
+            var contas = new List<ContaCorrente>() {
+                new ContaCorrente(418, 10),
+                new ContaCorrente(097, 20),
+                new ContaCorrente(221, 40),
+                new ContaCorrente(315, 35),
+                new ContaCorrente(257, 18)
+            };
+
+            Console.WriteLine("Order By por Numero da Conta");
+
+            IOrderedEnumerable<ContaCorrente> contasOrdenadas = contas.OrderBy(cc => cc.Numero);
+
+            foreach (var conta in contasOrdenadas.ToArray())
+            {
+                Console.WriteLine($"Conta: {conta.Numero} | Agencia: {conta.Agencia}");
+            }
+
+            Console.WriteLine("-----------------------------------------------------");
+            Console.WriteLine("Ordenação de Lista de Conta Corrente  (Por Agencia)");
+
+            contasOrdenadas = contas.OrderBy(cc => cc.Agencia);
+
+            foreach (var conta in contasOrdenadas.ToArray())
+            {
+                Console.WriteLine($"Conta: {conta.Numero} | Agencia: {conta.Agencia}");
+            }
+
+            Console.ReadLine();
+        }
+
+        static void Main5(string[] args)
+        {
             var idades = new List<int>();
             idades.Add(10);
             idades.Add(20);
